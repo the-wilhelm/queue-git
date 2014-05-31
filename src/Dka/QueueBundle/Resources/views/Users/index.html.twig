@@ -1,0 +1,47 @@
+{% extends 'DkaQueueBundle::layout.html.twig' %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h1 style="margin:0;padding:0;" class="pull-left">Users</h1>
+						<a href="users/add" type="button" class="btn btn-primary btn-lg pull-right">
+					  		<i class="fa fa-plus"></i>
+						</a>
+						<br clear="all" />
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Username</th>
+								<th>Email</th>
+								<th>User Type</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						{% for user in users %} 
+							<tr>
+								<td>{{ user.name }}</td>
+								<td>{{ user.username}}</td>
+								<td>{{ user.email}}</td>
+								<td>{{ user.title}}</td>
+								<td>
+									<a href="{{ path('edit_user', { id: user.id }) }}" type="button" class="btn btn-info">
+								  		<i class="fa fa-edit"></i>
+									</a>
+									<a href="{{ path('delete_user', { id: user.id }) }}" type="button" class="btn btn-danger">
+								  		<i class="fa fa-times"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</table
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

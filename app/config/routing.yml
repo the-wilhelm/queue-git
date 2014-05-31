@@ -1,0 +1,5 @@
+dka_queue:
+    resource: "@DkaQueueBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

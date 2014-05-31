@@ -1,0 +1,49 @@
+{% extends 'DkaQueueBundle::layout.html.twig' %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<!-- Default panel contents -->
+					<div class="panel-heading">
+						<h1 style="margin:0;padding:0;" class="pull-left">Tasks</h1>
+						<a href="{{ path('add_task') }}" type="button" class="btn btn-primary btn-lg pull-right">
+					  		<i class="fa fa-plus"></i>
+						</a>
+						<br clear="all" />
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Created</th>
+								<th>Name</th>
+								<th>Creator</th>
+								<th>Type</th>
+								<th>Queue</th>
+								<th style="text-align:right">Actions</th>
+							</tr>
+						</thead>
+						{% for task in tasks %} 
+							<tr>
+								<td>{{ task.created_at }}</td>
+								<td>{{ task.title }}</td>
+								<td>{{ task.name }}</td>
+								<td>{{ task.work_title }}</td>
+								<td>{{ task.queue_title }}</td>
+								<td style="text-align:right">
+									<a href="{{ path('edit_task', {id: task.id}) }}" type="button" class="btn btn-info">
+								  		<i class="fa fa-edit"></i>
+									</a>
+									<a href="{{ path('delete_task', {id: task.id}) }}" type="button" class="btn btn-danger">
+								  		<i class="fa fa-times"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</table
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
